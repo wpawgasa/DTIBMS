@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Changelog for Kendo UI v2014.2.903</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: .75em/1.5 Tahoma, sans-serif;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            font-size: normal;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: normal;
+
+            margin: 1.2em 0 .3em;
+            padding-bottom: .2em;
+        }
+
+        #page {
+            width: 50em;
+            margin: 0 auto 2em;
+            border-radius: 0 0 1em 1em;
+            box-shadow: 0 0 10px #ccc;
+            padding: 1em 2em 2em;
+        }
+
+        .poBoxIcon {
+            float: left;
+            font-size: 2em;
+            margin: 1.2em .5em 0 0;
+        }
+
+        .poTopLine {
+            border-top: 2px solid #e1e1e1;
+            margin: 17px 0 40px 0;
+        }
+    </style>
+
+    <base href="http://www.telerik.com/support/whats-new/kendo-ui-web/release-history">
+</head>
+<body>
+    <div id="page">
+        <h1 class="title">Release notes for Kendo UI v2014.2.903</h1>
+
+        <h1>Components</h1>
+        <div class="tClear poTopLine">
+            <div class="poBoxIconText">
+                <p><strong>What's new</strong></p><ul><li>iOS7 theme has text color issues in IE and Firefox</li><li>Improve kendo.support.scrollbar() performance</li><li>WP theme variants cannot be forced</li><li>.NET MVC bundling breaks on :-webkit-any() CSS selector.</li><li>Add boolean column to grid filter row demo</li><li>Improve iOS7 theme for easier text color modification</li></ul>
+                <p><strong>What's fixed</strong></p><ul><li>kendo.getter does not honor safe flag when returning cached expressions</li><li>DataBound widgets do not work in IE8</li><li>Windows Phone 8.1 Update 1 is detected as Android</li><li>Preventing close event, causes the view to close partially when modal is set to false</li><li>Rebinding options when widget name attribute has data- prefix does not work in AngularJS</li><li>Popup repositions in IE7/8 when one of its parents is resized</li><li>Popup borders are incorrectly sized in Firefox</li></ul>
+            </div>
+        </div>
+
+
+        <div class="tClear poTopLine">
+            <h2>ActionSheet</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>ActionSheet's close event cannot be prevented</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>AutoComplete</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>When suggest is set to true, the first value is selected after the dataSource is read</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Button</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>Buttons with icon have bigger right padding</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>ButtonGroup</h2>
+            <p><strong>What's new</strong></p><ul><li>Improve iOS7 theme for easier text color modification</li></ul>
+            
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Chart</h2>
+            <p><strong>What's new</strong></p><ul><li>Render Barcode and QRCode as SVG by default. Using Canvas can lead to poor print quality.</li><li>Funnel charts display negative data points by absolute value</li><li>Preventing seriesHover will temporarily deactivate the tooltip</li><li>Pie and donut charts display negative data points by absolute value</li><li>Fire *Click events on context menu event</li><li>Improved data binding performance</li><li>Add the current format and culture to the label template variables</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>An error can occur if the chart is destroyed or repainted while the tooltip is visible</li><li>Error when hovering chart legend items</li><li>Chart tooltip is hidden when in Bootstrap modal</li><li>Possible chart hang during DST transition (Asia/Amman time zone)</li><li>Crosshair tooltips are not destroyed</li><li>Remove AsTitle() for value member names from pie/donut/funel charts</li><li>majorGridLines are not visible for date x/yAxis in Canvas mode</li><li>Error when hovering over dynamically updating chart</li><li>Memory leak in Charts</li><li>SignalR configuration can't be set for Chart</li><li>An error is thrown when hovering over series in legend (type: "line", missingValues: "gap")</li><li>Tooltips for radar/polar charts are displayed for the topmost point only</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>ColorPicker</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>Columns config option cannot be configured through wrapper</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>ComboBox</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>Widget resets value on arrow click when datasource is empty</li><li>Empty widget throws errors when continue typing in it</li><li>In IE9 after initializing the widget, the input value is changed to null</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>ContextMenu</h2>
+            <p><strong>What's new</strong></p><ul><li>context menu does not provide info on which DOM element opened it</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>Context menu dataSource does not work with angular</li><li>Close open ContextMenu when a different one opens</li><li>Context menu stops working if target is removed from DOM</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>DataSource</h2>
+            <p><strong>What's new</strong></p><ul><li>DataSource supports offline storage</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>The pushCreate method unnecessarily wraps its argument</li><li>Enabling grouping breaks the widget when Angular is used</li><li>Grid leaks memory when refreshed</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Diagram</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>Diagram is missing dependency on kendo.dataviz.drawing</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Drawer</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>adaptive drawer is not swipe-able in iPad</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Drawing</h2>
+            <p><strong>What's new</strong></p><ul><li>Canvas updates are now rate limited to 60 FPS to avoid overloading the browser</li><li>Group methods are now chainable</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>Group transformation is not applied when rendering on Canvas</li><li>Text stroke is not applied when rendering on Canvas</li><li>Implicit line commands are not parsed when parsing SVG Paths</li><li>Transformed images are sometimes clipped. Transformations are slow (VML)</li><li>Error is thrown when Path stroke is set to null</li><li>Slow performance in Firefox (Canvas)</li><li>Drawing text will set the fill on the previously drawn path (Canvas)</li><li>Text is stroked even when stroke.width is 0 (VML)</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>DropDownList</h2>
+            <p><strong>What's new</strong></p><ul><li>DropDownList memory leak for mousedown</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>Widget does not remove k-state-focus on blur</li><li>DropDownList does not focus filter input in IE8</li><li>DropDownList in a template does not autoupdate its scope</li><li>When used in filter menu, the filter input is added multiple times.</li><li>Popup widget in inline editor, auto closes immediately after opening on iPad</li><li>Widget creates two filter inputs when setOptions method is called</li><li>Widget closes popup on scrollbar click in IE11</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Editor</h2>
+            <p><strong>What's new</strong></p><ul><li>Allow pasting of images in browsers that support it</li><li>Improve handling of pasted roman numerals from MS Word</li><li>Convert `.MsoTitle` styled elements to `h1` when pasting from MS Word</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>Editor height is larger in some browsers (e.g. IE9-) when using the classic iframe mode</li><li>CleanFormatting does not remove class attributes</li><li>Shift+Enter does nothing on first press in IE11</li><li>CleanFormatting tool does not remove format from fully selected node in FF</li><li>JavaScript error when range cannot be restored properly</li><li>Removing block formats affects content outside inline editor</li><li>Editor in ListView editor template cannot be focused on second edit</li><li>Inline editor toolbar goes off the screen when is initialized on top of the page</li><li>Change event is fired before the value is updated in IE &lt; 9</li><li>Calling preventDefault in the keydown event doesn't prevent backspace</li><li>Pasting formatted list in Kendo UI Editor is missing its content</li><li>Snippets drop down is empty on mobile device</li><li>Pasting ordered list with tabs from Word to Editor loses formatting </li><li>Deleting content with backspace cannot be undone</li><li>System line breaks are not always added when setting the editor content via value()</li><li>Editor tool icons are not split in multiple rows on iOS device</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Gantt</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>_resize() doesn't update height properly</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Globalization</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>parseDate should handle ISO 8601 time offsets </li><li>kendo.parseDate does not parse dates with "Z" symbol</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Grid</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>Grid with virtual scrolling does not allow selection after paging on iPad </li><li>Grid leaks memory when refreshed</li><li>Javascript error when using Grid with MVVM binding, frozen columns and selection</li><li>Footer template breaks if aggregates are defined on nested fields</li><li>Update and Cancel buttons click handlers are not removed during inline editing</li><li>Mobile columnMenu displays the column field instead of column title</li><li>Column menu template does not resolve names correctly</li><li>Radio buttons in row filter do not render in IE8</li><li>Primary button style is missing from Grid boolean filter menu</li><li>Grid with frozen columns does not align correctly when columns sorted</li><li>Javascript error thrown when a Grid column is resized before the widget is dataBound</li><li>Horizontal scroll offset should be reset to zero when setDataSource is used</li><li>Error is thrown when grouping and column.aggregates option is set to empty array</li><li>Selected row style not applied to alternating rows in a detail Grid</li><li>When default grouping is applied unneeded filter column is shown</li><li>Row filter doesn't respect initial column visiblity</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>ListView</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>ListView border misplacement in Flat theme, native scrolling, Chrome for Android</li><li>ListView does not resizes correctly on orientation change</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Map</h2>
+            <p><strong>What's new</strong></p><ul><li>Add imagerySet() for bing map layer</li><li>Add markerClick event</li><li>Add markerActivate event</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>Mixed content warning when using Bing layer on HTTPS page</li><li>Bing layer not accessible when the page is loaded over HTTPS</li><li>Attribution control is visible even when empty</li><li>Map markers do not update position on zoom in/out</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>MaskedTextBox</h2>
+            <p><strong>What's new</strong></p><ul><li>Clear promptChar on blur</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>Widget does not restrict typed characters on Android/Windows Phone devices</li><li>Widget does not post form on Enter</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Menu</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>Menu doesn't open on touch in IE11</li><li>Submenus are broken if the Menu is initialized inside another Menu's template</li><li>ContextMenu doesn't pass target to events if alignToAnchor is false</li><li>Dynamically added content renders as part of the item</li><li>ContextMenu event handlers should refer to element matching the filter</li><li>Menu container disappears </li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>MobileButton</h2>
+            <p><strong>What's new</strong></p><ul><li>Improve iOS7 theme for easier text color modification</li></ul>
+            
+        </div>
+        <div class="tClear poTopLine">
+            <h2>MobileListView</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>Angular binding does not work in grouped mobile listview</li><li>Mobile ListView endless scrolling does not bind the initial view to MVVM</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>MultiSelect</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>MultiSelect hides placeholder text on form reset</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Scheduler</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>Selected events are kept between different groups</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>ScrollView</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>ScrollView prev() and next() method do not work with local data</li><li>Changing the DataSource while ScrollView is hidden does not reset widget's pages</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Slider</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>Sliders skipped by kendo.resize method</li><li>Slider should render input with value in the current culture</li><li>Slider init should not change the input value</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Splitter</h2>
+            <p><strong>What's new</strong></p><ul><li>Allow Splitter partial collapse to specific size</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>Splitter splitbars should not have a tabindex if the adjacent panes are not collapsible and resizable</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>TabStrip</h2>
+            
+            <p><strong>What's fixed</strong></p><ul><li>TabStrip shouldn't add scroll wrap if there is already one.</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>ToolBar</h2>
+            <p><strong>What's new</strong></p><ul><li>Provide ability for attaching HTML attributes for ToolBar's elements</li><li>Provide unified button ID in click/toggle event data</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>A non resizable ToolBar placed inside TabStrip's Tab will throw JavaScript error</li><li>Using HTML tags inside the text of a ToolBar's button does not work</li><li>enable false does not work for items with overlow: always</li><li>HTML attributes are not being applied </li><li>DropDownList with no items inserted in ToolBar collapses in height</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>TreeMap</h2>
+            <p><strong>What's new</strong></p><ul><li>Implement stable sorting for treeMap items</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>TreeMap throws all events twice</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>TreeView</h2>
+            <p><strong>What's new</strong></p><ul><li>Check event</li><li>Performance improvement for tri-state checkboxes</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>Checked state is not updated after drag&amp;drop finishes</li><li>JS error when destination treeview is nested in a `k-item` and node is dropped at root level</li><li>Indeterminate state is not properly shown after dataSource is changed</li><li>MVVM template binding does not work for child elements</li><li>Messages cannot be set via the fluent API</li></ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Window</h2>
+            <p><strong>What's new</strong></p><ul><li>resizeEnd event</li><li>The closing procedure should not be executed more than once</li></ul>
+            <p><strong>What's fixed</strong></p><ul><li>Window destroy() detaches other instances' window.resize handler</li><li>Window content element is displayed hidden in some scenarios</li><li>Window captures nested Grid column resizing pointer events</li></ul>
+        </div>
+    </div>
+</body>
+</html>
