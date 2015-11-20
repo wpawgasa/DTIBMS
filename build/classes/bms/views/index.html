@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>TDL Touch UI</title>
+        <link href="../lib/KendoPro/styles/kendo.common.min.css" rel="stylesheet">
+        <link href="../lib/KendoPro/styles/kendo.flat.min.css" rel="stylesheet">
+        <link href="../lib/KendoPro/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+        <link href="../resources/styles/default.css" rel="stylesheet">
+        <link href="../resources/leaflet/leaflet.css" rel="stylesheet">
+        <script src="../lib/KendoPro/js/jquery.min.js"></script>
+        <script src="../lib/KendoPro/js/kendo.all.min.js"></script>
+        <script src="../js/jquery.runner.js"></script>
+        <script src="../resources/leaflet/leaflet.js"></script>
+        
+
+
+    </head>
+    <body>
+        
+        <div data-role="view" id="welcomeView"  data-stretch="true" 
+             data-persist="true" 
+             data-transition="overlay:down">
+
+            <div id="welcomeContent">
+                <p>
+                    <img src="../resources/images/logo2.png" 
+                         width="100" height="125"/>
+                </p>
+                <div id="header">
+
+                    <p>DTI-BMS</p>
+                </div>
+                <div id="content">
+                    <a id="settingBtn" class="boxbutton" 
+                       href="#main_setting_form" data-role="button" 
+                       data-transition="overlay:up">
+                        <img src="../resources/images/setting2.png" 
+                             width="64" height="64"/>
+                        SETTINGS
+                    </a>
+                    &NonBreakingSpace;
+
+                    <a id="connectBtn" class="boxbutton">
+                        <img src="../resources/images/connect2.png" 
+                             width="64" height="64"/>
+                        CONNECT
+                    </a>
+
+
+
+
+
+
+
+
+                </div>
+                <div id="footer">
+
+                </div>
+
+            </div>
+
+
+        </div>
+           <div data-role="view" id="main_setting_form" 
+             data-show="initMainSettingForm" data-title="Settings" 
+             data-transition="overlay:up" data-persist="true">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a id="main-setting-back-button" class="nav-button" 
+                       data-align="left" href="#welcomeView" data-role="button">
+                        Back</a>
+                    <span data-role="view-title"></span>
+                    <div data-align="right">
+
+                        <a id="main-setting-new-button" class="nav-button" 
+                           href="#add_profile_form"  data-role="button" 
+                           data-transition="slide:left">New</a>
+                        <a id="main-setting-edit-button" class="nav-button" 
+                           href="#edit_profile_form"  data-role="button" 
+                           data-transition="slide:left">Edit</a>
+                        <a class="delete-button" id="main-setting-delete-button" 
+                           data-role="button">Delete</a>
+                    </div>
+
+                </div>
+            </header>
+
+
+
+            <ul data-role="listview" data-style="inset" data-type="group">
+                <li>Profile
+                    <ul>
+                        <li>
+                            <label>Select profile
+                                <select id="comm_profile" 
+                                        onChange="changeProfile()">
+
+                                </select>
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul data-role="listview" data-style="inset" data-type="group">
+                <li>Settings
+                    <ul>
+                        <li>
+                            <a href="#serial-setting-view" 
+                               data-transition="slide:left">
+                                Serial port setting
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#gps-setting-view" 
+                               data-transition="slide:left">GPS setting
+                            </a>
+                        </li>
+                        <li><a href="#radio-setting-view" 
+                               data-transition="slide:left">Radio setting
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div data-role="footer" 
+                 style="background: none; padding: 5px; text-align: center;">
+
+            </div>
+
+        </div>
+
+        <div data-role="view" id="add_profile_form" 
+             data-show="initAddProfileForm" data-title="Add New Profile" 
+             data-persist="true">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a id="addprofile-back-button" class="nav-button" 
+                       data-align="left" href="#main_setting_form" 
+                       data-role="button" data-transition="slide:right">Back</a>
+                    <span data-role="view-title"></span>
+                    <div data-align="right">
+
+                        <a id="addprofile-save-button" class="nav-button"  
+                           data-role="button">Save</a>
+
+                    </div>
+
+                </div>
+            </header>
+
+
+
+            <ul data-role="listview" data-style="inset" data-type="group">
+                <li>Profile
+                    <ul>
+                        <li>
+                            <label>Profile name
+                                <input type="text" id="new_profile_name" />
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+
+
+
+
+        </div>
+
+        <div data-role="view" id="edit_profile_form" 
+             data-show="initEditProfileForm" data-title="Add New Profile" 
+             data-persist="true">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a id="editprofile-back-button" class="nav-button" 
+                       data-align="left" href="#main_setting_form" 
+                       data-role="button" data-transition="slide:right">Back</a>
+                    <span data-role="view-title"></span>
+                    <div data-align="right">
+
+                        <a id="editprofile-save-button" class="nav-button"  
+                           data-role="button">Save</a>
+
+                    </div>
+
+                </div>
+            </header>
+
+
+
+            <ul data-role="listview" data-style="inset" data-type="group">
+                <li>Profile
+                    <ul>
+                        <li>
+                            <label>Profile name
+                                <input type="text" 
+                                       id="edit_profile_name" value="" />
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+
+
+
+
+        </div>
+
+        <div data-role="view" id="serial-setting-view" 
+             data-show="initSerialSettingForm" data-title="Serial Port Setting" 
+             data-persist="true">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a id="serial-setting-back-button" class="nav-button" 
+                       data-align="left" href="#main_setting_form" 
+                       data-role="button" data-transition="slide:right">Back</a>
+                    <span data-role="view-title"></span>
+                    <a id="serial-setting-save-button" class="nav-button" 
+                       data-align="right" data-role="button">Save</a>
+                </div>
+            </header>
+
+            <ul id="serial_setting_list_form" data-role="listview" data-style="inset" data-type="group">
+                <li>Serial Port Settings
+                    <ul>
+                        <li>
+                            <label>Communication Port
+                                <select id="comm_port">
+                                    <option value="COM1">COM1</option>
+                                    <option value="COM2">COM2</option>
+                                    <option value="COM3">COM3</option>
+                                    <option value="COM4">COM4</option>
+                                    <option value="COM5">COM5</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li>
+                            <label>Bit Rate
+                                <select id="bit_rates">
+                                    <option value="115200">115200</option>
+                                    <option value="57600">57600</option>
+                                    <option value="38400">38400</option>
+                                    <option value="19200">19200</option>
+                                    <option value="9600">9600</option>
+                                    <option value="4800">4800</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li>
+                            <label>Data Bits
+                                <select id="databits">
+                                    <option value="8">8</option>
+                                    <option value="7">7</option>
+                                    <option value="6">6</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li>
+                            <label>Stop Bits
+                                <select id="stopbits">
+                                    <option value="2">2</option>
+                                    <option value="1.5">1.5</option>
+                                    <option value="1" selected>1</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li>
+                            <label>Parity Bits
+                                <select id="parity">
+                                    <option value="Space">Space</option>
+                                    <option value="Mark">Mark</option>
+                                    <option value="Odd">Odd</option>
+                                    <option value="Even">Even</option>
+                                    <option value="None" selected>None</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li>
+                            <label>Flow Control
+                                <select id="flowcontrol">
+                                    <option value="Hardware">Hardware</option>
+                                    <option value="XonXoff">Xon/Xoff</option>
+                                    <option value="None" selected>None</option>
+                                </select>
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+
+        </div>
+
+        <div data-role="view" id="gps-setting-view" data-init="initGPSSettingForm" data-model="gps_params" data-title="GPS Setting" data-persist="true">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a id="gps-setting-back-button" class="nav-button" data-align="left" href="#main_setting_form" data-role="button" data-transition="slide:right">Back</a>
+                    <span data-role="view-title"></span>
+                    <a id="gps-setting-save-button" class="nav-button" data-align="right" data-role="button">Save</a>
+                </div>
+            </header>
+
+            <ul id="gps_setting_list_form" data-role="listview" data-style="inset" data-type="group">
+                <li>GPS Settings
+                    <ul>
+                        <li>
+                            <label>GPS Mode
+                                <select id="gps_mode" data-bind="value: gpsMode">
+                                    <option value="1">Transponder</option>
+                                    <option value="2">PC/Base Station</option>
+                                    <option value="3">Marine Radar</option>
+                                    <option value="4">GPS Display</option>
+                                    <option value="12">TDMA Data</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li>
+                            <label>GPS positioning
+                                <input data-role="switch" type="checkbox" id="gps_position" data-bind="checked: gpsEnabled" />
+                            </label>
+                        </li>
+                        <li>
+                            <label>Position update rate (s)
+                                <input id="pos_update_rate" type="number" max="99" min="1" data-bind="value: gpsUpdate" />
+                            </label>
+                        </li>
+                        <li>
+                            <label>Position report rate (s)
+                                <input id="pos_tx_rate" type="number" max="99" min="1" data-bind="value: gpsReport" />
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+
+        </div>
+        <div data-role="view" id="radio-setting-view" data-init="initRadioSettingForm" data-model="radio_params" data-title="Radio Setting" data-persist="true">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a id="radio-setting-back-button" class="nav-button" data-align="left" href="#main_setting_form" data-role="button" data-transition="slide:right">Back</a>
+                    <span data-role="view-title"></span>
+                    <a id="radio-setting-save-button" class="nav-button" data-align="right" data-role="button">Save</a>
+                </div>
+            </header>
+
+            <ul data-role="listview" data-style="inset"data-type="group">
+                <li>Radio Settings
+                    <ul>
+                        <li>
+                            <label>OTA Baud (bps)
+                                <select id="ota_baud" data-bind="value: otaBaud">
+                                    <option value="3">4800 bps</option>
+                                    <option value="5">9600 bps</option>
+                                    <option value="6">19200 bps</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li>
+                            <label>Slot time (ms)
+                                <input id="slot_time" type="number" data-bind="value: slotTime" />
+                            </label>
+                        </li>
+                        <li>
+                            <label>TDMA frame time (s)
+                                <input id="frame_time" type="number" data-bind="value: frameTime" />
+                            </label>
+                        </li>
+                        <li>
+                            <label>Frequency (MHz)
+                                <input id="frequency" type="number" data-bind="value: freq" />
+                            </label>
+                        </li>
+                        <li>
+                            <label>Power output
+                                <input id="pwr_output" type="range" max="100" min="0" data-bind="value: pwr" />
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+
+        </div>
+
+        <div data-role="modalview" id="modalview-db-error" style="width: 220px;">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span class="modal-header">Database error</span>
+                </div>
+            </div>
+
+            <div class="modal-content" data-role="contentview" style="padding: 5px;">
+
+                <p id="db-error"></p>
+                <div id="req-data"></div>
+            </div>
+
+            <div data-role="footer" style="background: none; padding: 5px;">
+                <a class="modal-button" data-click="closeModalViewDBErrAndRetry" id="modalview-db-retry-button" type="button" data-role="button">Retry</a>
+                <a class="modal-button" data-click="closeModalViewDBErrAndExit" id="modalview-db-exit-button" type="button" data-role="button">Close</a>
+            </div>
+
+        </div>
+
+        <div data-role="modalview" id="modalview-server-error" style="width: 220px;">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span class="modal-header">Server error</span>
+                </div>
+            </div>
+
+            <div class="modal-content" data-role="contentview" style="padding: 5px;">
+                <p id="server-error"></p>
+                <div id="server-req-data"></div>
+            </div>
+
+            <div data-role="footer" style="background: none; padding: 5px;">
+                <a class="modal-button" data-click="closeModalViewServerErrAndRetry" type="button" data-role="button">Retry</a>
+                <a class="modal-button" data-click="closeModalViewServerErrAndExit" type="button" data-role="button">Exit</a>
+            </div>
+
+        </div>
+        <div data-role="modalview" id="modalview-conn-error" style="width: 220px;">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span class="modal-header">Connection error</span>
+                </div>
+            </div>
+
+            <div class="modal-content" data-role="contentview" style="padding: 5px;">
+                <p id="conn-error"></p>
+                <div id="conn-req-data"></div>
+            </div>
+
+            <div data-role="footer" style="background: none; padding: 5px;">
+                <a class="modal-button" data-click="closeModalViewConnErrAndRetry" type="button" data-role="button">Retry</a>
+                <a class="modal-button" data-click="closeModalViewConnErrAndExit" type="button" data-role="button">Exit</a>
+            </div>
+
+        </div>
+        <div data-role="modalview" id="modalview-form-error" style="width: 220px;">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span class="modal-header">Form error</span>
+                </div>
+            </div>
+
+            <div class="modal-content" data-role="contentview" style="padding: 5px;">
+                <p id="form-error"></p>
+
+            </div>
+
+            <div data-role="footer" style="background: none; padding: 5px;">
+                <a class="modal-button" data-click="closeModalViewFormErr" id="modalview-form-exit-button" type="button" data-role="button">OK</a>
+            </div>
+
+        </div>
+        <div data-role="modalview" id="modalview-confirm" style="width: 220px;">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span class="modal-header">Are you sure?</span>
+                </div>
+            </div>
+
+            <div class="modal-content" data-role="contentview" style="padding: 5px;">
+                <p id="confirm-msg"></p>
+                <div id="confirm-req-data"></div>
+            </div>
+
+            <div data-role="footer" style="background: none; padding: 5px;">
+                <a class="modal-button" data-click="modalViewConfirm"  type="button" data-role="button">Yes</a>
+                <a class="modal-button" data-click="modalViewCancel"  type="button" data-role="button">No</a>
+            </div>
+
+        </div>
+
+        <div data-role="modalview" id="modalview-input-mission-key" style="width: 220px;">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <span class="modal-header">Input Mission Key</span>
+                </div>
+            </div>
+
+            <div class="modal-content" data-role="contentview" style="padding: 5px;">
+                <input type="password" id="mission_key" />
+            </div>
+
+            <div data-role="footer" style="background: none; padding: 5px;">
+                <a class="modal-button" data-click="modalViewConfirmConnect" type="button" data-role="button">Connect</a>
+                <a class="modal-button" data-click="modalViewCancelConnect" type="button" data-role="button">Cancel</a>
+            </div>
+
+        </div>
+
+        <div data-role="layout" id="app-main-tabstrip" data-id="mobile-tabstrip">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a id="left-drawer-button" class="nav-button" data-align="left" href="#left-drawer" data-rel="drawer" data-role="button" data-icon="mydrawer"></a>
+                    <span data-role="view-title"></span>
+                    <a id="right-drawer-button" class="nav-button" data-align="right" href="#right-drawer" data-rel="drawer" data-role="button" data-icon="myinfo"></a>
+                </div>
+            </header>
+
+            <div data-role="footer">
+                <div data-role="tabstrip">
+                    <a href="#tabstrip-tacmap" data-icon="globe">Map
+                    </a><a href="#tabstrip-tacmsg" data-icon="messages">Messages
+                    </a><a href="#tabstrip-members" data-icon="contacts">Members
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="view" id="tabstrip-tacmap" data-title="Tactical Map" data-layout="mobile-tabstrip">
+            <div id="map_holder"></div>
+        </div>
+        <div data-role="view" id="tabstrip-tacmsg" data-title="Tactical Messages" data-init="initTacMessageList" data-layout="mobile-tabstrip">
+            <ul id="message-listview">
+                <li>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbn
+                </li>
+                <li>bbbbn
+                </li>
+                <li>cccc
+                </li>
+            </ul>
+            <div id="message_toolbar"></div>
+
+
+
+        </div>
+
+        <div data-role="view" id="tabstrip-members" data-title="Members" data-init="initMemberList" data-layout="mobile-tabstrip">
+            <ul id="members-listview"></ul>
+        </div>
+
+        <div data-role="drawer" id="left-drawer" data-title="Config" data-swipe-to-open="false" data-position="left">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                </div>
+            </header>
+
+            <ul data-role="listview">
+                <li data-icon="">Log Out</li>
+                <li data-icon="camera">Exit Application</li>
+            </ul>
+        </div>
+        <div data-role="drawer" id="right-drawer" data-title="Info" data-swipe-to-open="false" data-position="right">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+
+                </div>
+            </header>
+
+            <div data-align="left">
+                <p style="margin-bottom: 0px; font-size: smaller;">Connected as:</p>
+                <p id="connected_profile" style="margin-top: 0px;">Default</p>
+            </div>
+            <div data-align="right">
+                <p style="margin-bottom: 0px; font-size: smaller;">Connected time:</p>
+                <p id="connected_time" style="margin-top: 0px;">Default</p>
+            </div>
+
+        </div>
+
+
+        <div class="k-loading-mask" style="width:100%;height:100%;background-color: rgba(255,255,255,0.8);">
+            <span class="k-loading-text">Loading...</span>
+            <div class="k-loading-image">
+                <div class="k-loading-color"></div>
+            </div>
+        </div>
+        <script type="text/x-kendo-tmpl" id="memberlist-template">
+            <div class="member-item">
+            # if(status){#
+            <img class="status-icon" src="../resources/images/free-map-marker-icon-green.png" width="48" />
+            #} else {#
+            <img class="status-icon" src="../resources/images/free-map-marker-icon-dark.png" width="48" />
+            #}#
+            <h3>#:profileName# on #:radioId#</h3>
+            <p>Last update: #:updateTime#</p>
+            </div>
+        </script>
+        <script type="text/x-kendo-tmpl" id="messagelist-template">
+            <div class="tacmsg-item">
+
+            <h3>#:profileName# on #:radioId#</h3>
+            <p>Message: #:tacMessage#</p>
+            </div>
+        </script>
+        <script>
+            var app;
+            var client = null;
+            var reconnectAttempts = 0;
+            var maxReconnectAttempts = 3;
+            var isFirstResponse = true;
+            var isCmdServerBusy = false;
+            var reqStack = [];
+            var mission_key = "";
+            var earth;
+            var map;
+            var selfMarker;
+            var markers = [];
+            var memberMarkers = [];
+            var members = [];
+            var tacMessages = [];
+            //var littleton = L.marker([13.8, 100.6]).bindPopup('This is Littleton, CO.');
+
+            var membersLayer = null;
+            function cmdMessage(msg, params) {
+                this.msg = msg;
+                this.params = params;
+                this.reqMsg = "";
+            }
+            cmdMessage.prototype = {
+                constructor: cmdMessage,
+                formatControlMessage: function () {
+                    this.reqMsg = JSON.stringify({
+                        msg_name: this.msg,
+                        msg_params: this.params
+                    });
+                }
+            }
+            function MarkerObj(id, marker) {
+                this.markerId = id
+                this.marker = marker;
+
+            }
+            MarkerObj.prototype = {
+                constructor: MarkerObj,
+                getId: function () {
+                    return this.markerId
+                },
+                getMarker: function () {
+                    return this.marker
+                }
+            }
+
+            function getReqMsg() {
+                if (reqStack.length > 0 && !isCmdServerBusy) {
+                    var msg = reqStack.pop();
+                    requestMsg(msg);
+                }
+                setTimeout(getReqMsg, 500, null);
+            }
+
+            function requestMsg(msg) {
+
+                client = net.connect(9889, 'localhost');
+                // Add a 'data' event handler for the client socket
+                // data is what the server sent to this socket
+                client.on('data', function (data) {
+
+                    //console.log(data);
+                    var retStr = bin2String(data);
+                    var obj = JSON.parse(retStr);
+                    //console.log(obj);
+
+                    client.destroy();
+                    reconnectAttempts = 0;
+                    isCmdServerBusy = false;
+                    if (obj.msg_name == 'response server status') {
+                        var serverStatus = obj.serverStatus;
+                        if (serverStatus.status_name == "isRunning" && serverStatus.status_result == "OK") {
+                            revealApp();
+                            var reqMsg = new cmdMessage('get profiles', null);
+                            reqMsg.formatControlMessage();
+                            reqStack.push(reqMsg);
+                            //requestMsg(reqMsg);
+
+
+
+                        }
+
+                    }
+
+                    if (obj.msg_name == 'list profiles' && (obj.msg_err == "" || obj.msg_err == null)) {
+                        //console.log(obj);
+                        var user_profiles = obj.userprofiles;
+                        if ($('#new_comm_profile').val() != undefined) {
+                            $('#new_comm_profile').replaceWith('<select id="comm_profile"></select>');
+                        }
+                        $('#comm_profile').empty();
+                        for (var i = 0; i < user_profiles.length; i++) {
+                            var user_profile = user_profiles[i];
+                            //console.log(conn_profile);
+                            if (user_profile.profileId == 1) {
+                                $('#comm_profile').append('<option value="' + user_profile.profileId + '">' + user_profile.profileName + ' (Default)</option>');
+                            } else {
+                                $('#comm_profile').append('<option value="' + user_profile.profileId + '">' + user_profile.profileName + '</option>');
+                            }
+
+
+                        }
+                        //$('#comm_profile').append('<option value="0">New profile</option>');
+
+                        $("#comm_profile").kendoDropDownList();
+                        if (isFirstResponse) {
+                            initApp();
+                            isFirstResponse = false;
+                        }
+                        if (obj.msg_params != null) {
+                            var params = jQuery.parseJSON(obj.msg_params);
+                            getProfile(params.profileId);
+                        } else {
+                            getProfile(1);
+                        }
+
+
+
+                    } else if (obj.msg_name == 'list profiles') {
+                        $('#db-error').text('Cannot list profiles from DB');
+                        $('#modalview-db-error').kendoMobileModalView('open');
+                    }
+
+                    if (obj.msg_name == 'response profile' && (obj.msg_err == "" || obj.msg_err == null)) {
+                        //console.log("no err");
+
+                        var user_profiles = obj.userprofiles;
+
+                        var user_profile = user_profiles[0];
+
+                        var conn_profile = user_profile.connProfile;
+
+                        var gps_profile = user_profile.gpsProfile;
+
+                        var radio_profile = user_profile.radioProfile;
+
+                        //console.log(conn_profile);
+                        $('#comm_port').val(conn_profile.comm_port);
+                        $('#bit_rates').val(conn_profile.bit_rates);
+                        $('#databits').val(conn_profile.data_bits);
+                        $('#stop_bits').val(conn_profile.stop_bits);
+                        $('#parity').val(conn_profile.parity);
+                        $('#flowcontrol').val(conn_profile.flowcontrol);
+                        gps_params.set('gpsMode', gps_profile.gpsmode);
+                        gps_params.set('gpsEnabled', gps_profile.gpsenabled);
+                        gps_params.set('gpsUpdate', gps_profile.gpsupdate);
+                        gps_params.set('gpsReport', gps_profile.gpsreport)
+
+                        radio_params.set('otaBaud', radio_profile.otabaud);
+                        radio_params.set('slotTime', radio_profile.slottime);
+                        radio_params.set('frameTime', radio_profile.frametime);
+                        radio_params.set('freq', radio_profile.frequency);
+                        radio_params.set('pwr', radio_profile.power);
+
+                        $('#comm_profile option[value=' + user_profile.profileId + ']').attr('selected', 'selected');
+                        $("#comm_profile").kendoDropDownList();
+                    } else if (obj.msg_name == 'response profile') {
+                        //console.log("err");
+                        var reqMsg = new cmdMessage('get profile', obj.msg_params);
+                        reqMsg.formatControlMessage();
+                        $('#req-data').data(reqMsg);
+                        $('#db-error').text('Cannot get profile from DB');
+                        $('#modalview-db-error').kendoMobileModalView('open');
+                    }
+
+                    if (obj.msg_name == 'response add profile' && (obj.msg_err == "" || obj.msg_err == null)) {
+                        var params = '{"profileId":"' + obj.userprofiles[0].profileId + '"'
+                                + '}';
+                        var reqMsg = new cmdMessage('get profiles', params);
+                        reqMsg.formatControlMessage();
+                        reqStack.push(reqMsg);
+                        //requestMsg(reqMsg);
+                        app.navigate('#:back');
+                    } else if (obj.msg_name == 'response add profile') {
+                        var reqMsg = new cmdMessage('add new profile', obj.msg_params);
+                        reqMsg.formatControlMessage();
+                        $('#req-data').data(reqMsg);
+                        $('#db-error').text('Cannot add profile : ' + obj.msg_err);
+                        $('#modalview-db-error').kendoMobileModalView('open');
+                    }
+
+                    if (obj.msg_name == 'response update profile' && (obj.msg_err == "" || obj.msg_err == null)) {
+                        var params = '{"profileId":"' + obj.userprofiles[0].profileId + '"'
+                                + '}';
+                        var reqMsg = new cmdMessage('get profiles', params);
+                        reqMsg.formatControlMessage();
+                        reqStack.push(reqMsg);
+                        //requestMsg(reqMsg);
+                        app.navigate('#:back');
+                    } else if (obj.msg_name == 'response update profile') {
+                        var reqMsg = new cmdMessage('update profile', obj.msg_params);
+                        reqMsg.formatControlMessage();
+                        $('#req-data').data(reqMsg);
+                        $('#db-error').text('Cannot update profile : ' + obj.msg_err);
+                        $('#modalview-db-error').kendoMobileModalView('open');
+                    }
+
+                    if (obj.msg_name == 'response delete profile' && (obj.msg_err == "" || obj.msg_err == null)) {
+                        var params = '{"profileId":"' + obj.userprofiles[0].profileId + '"'
+                                + '}';
+                        var reqMsg = new cmdMessage('get profiles', null);
+                        reqMsg.formatControlMessage();
+                        reqStack.push(reqMsg);
+                        //requestMsg(reqMsg);
+
+                    } else if (obj.msg_name == 'response delete profile') {
+                        var reqMsg = new cmdMessage('delete profile', obj.msg_params);
+                        reqMsg.formatControlMessage();
+                        $('#req-data').data(reqMsg);
+                        $('#db-error').text('Cannot delete profile : ' + obj.msg_err);
+                        $('#modalview-db-error').kendoMobileModalView('open');
+                    }
+
+                    if (obj.msg_name == 'response update serial profile' && (obj.msg_err == "" || obj.msg_err == null)) {
+
+
+                    } else if (obj.msg_name == 'response update serial profile') {
+                        var reqMsg = new cmdMessage('update serial profile', obj.msg_params);
+                        reqMsg.formatControlMessage();
+                        $('#req-data').data(reqMsg);
+                        $('#db-error').text('Cannot update serial profile : ' + obj.msg_err);
+                        $('#modalview-db-error').kendoMobileModalView('open');
+                    }
+
+                    if (obj.msg_name == 'response update gps profile' && (obj.msg_err == "" || obj.msg_err == null)) {
+
+
+                    } else if (obj.msg_name == 'response update gps profile') {
+                        var reqMsg = new cmdMessage('update gps profile', obj.msg_params);
+                        reqMsg.formatControlMessage();
+                        $('#req-data').data(reqMsg);
+                        $('#db-error').text('Cannot update gps profile : ' + obj.msg_err);
+                        $('#modalview-db-error').kendoMobileModalView('open');
+                    }
+
+                    if (obj.msg_name == 'response update radio profile' && (obj.msg_err == "" || obj.msg_err == null)) {
+
+
+                    } else if (obj.msg_name == 'response update radio profile') {
+                        var reqMsg = new cmdMessage('update radio profile', obj.msg_params);
+                        reqMsg.formatControlMessage();
+                        $('#req-data').data(reqMsg);
+                        $('#db-error').text('Cannot update radio profile : ' + obj.msg_err);
+                        $('#modalview-db-error').kendoMobileModalView('open');
+                    }
+
+                    if (obj.msg_name == 'response connect' && (obj.msg_err == "TDLConnection" || obj.msg_err == "" || obj.msg_err == null)) {
+                        var params = '{"profileId":' + $('#comm_profile option:selected').val() + ''
+                                + ',"missionkey":"' + mission_key + '"'
+                                + ',"gpsprofile":{'
+                                + '"gpsmode":' + gps_params.get('gpsMode') + ''
+                                + ',"gpsupdate":' + gps_params.get('gpsUpdate') + ''
+                                + ',"gpsreport":' + gps_params.get('gpsReport') + ''
+                                + ',"gpsenabled":' + gps_params.get('gpsEnabled') + ''
+                                + '}'
+                                + ',"radioprofile":{'
+                                + '"otabaud":"' + radio_params.get('otaBaud') + '"'
+                                + ',"slottime":' + radio_params.get('slotTime') + ''
+                                + ',"frametime":' + radio_params.get('frameTime') + ''
+                                + ',"frequency":' + radio_params.get('freq') + ''
+                                + ',"power":' + radio_params.get('pwr') + ''
+                                + '}'
+                                + '}';
+                        var reqMsg = new cmdMessage('setup radio', params);
+                        reqMsg.formatControlMessage();
+                        reqStack.push(reqMsg);
+                        //requestMsg(reqMsg);
+                        app.navigate("tabstrip-tacmap", "slide:right");
+
+                        $('#connected_profile').text($('#comm_profile option:selected').text());
+                        $('#connected_time').runner('start');
+                    } else if (obj.msg_name == 'response connect') {
+                        var reqMsg = new cmdMessage('connect', obj.msg_params);
+                        reqMsg.formatControlMessage();
+                        $('#conn-req-data').data(reqMsg);
+                        $('#conn-error').text('Cannot connect : ' + obj.msg_err);
+                        $('#modalview-conn-error').kendoMobileModalView('open');
+                    }
+
+                    if (obj.msg_name == 'response setup' && (obj.msg_err == "" || obj.msg_err == null)) {
+                        //console.log(obj);
+                        revealApp();
+                        initializeMapv2();
+                    } else if (obj.msg_name == 'response setup') {
+                        revealApp();
+                        var reqMsg = new cmdMessage('setup radio', obj.msg_params);
+                        reqMsg.formatControlMessage();
+                        $('#conn-req-data').data(reqMsg);
+                        $('#conn-error').text('Cannot connect : ' + obj.msg_err);
+                        $('#modalview-conn-error').kendoMobileModalView('open');
+                    }
+
+                    if (obj.msg_name == 'response own position' && (obj.msg_err == "" || obj.msg_err == null)) {
+                        //console.log(obj);
+                        var tracks = obj.tracks;
+                        if (tracks.length > 0) {
+                            var track = tracks[0];
+
+                            /*var kmlString = ''
+                             + '<?xml version="1.0" encoding="UTF-8"?>'
+                             + '<kml xmlns="http://www.opengis.net/kml/2.2">'
+                             
+                             + '<Document>'
+                             + '  <Camera>'
+                             + '    <longitude>'+track.posLon+'</longitude>'
+                             + '    <latitude>'+track.posLat+'</latitude>'
+                             + '    <altitude>200</altitude>'
+                             + '    <heading>0.0</heading>'
+                             + '    <tilt>0</tilt>'
+                             + '  </Camera>'
+                             
+                             + '  <Placemark>'
+                             + '    <name>'+track.posName+'</name>'
+                             + '    <Point>'
+                             + '      <coordinates>'+track.posLon+','+track.posLat+',0</coordinates>'
+                             + '    </Point>'
+                             + '  </Placemark>'
+                             
+                             + '</Document>'
+                             + '</kml>';
+                             var kmlObject = earth.parseKml(kmlString);
+                             earth.getFeatures().appendChild(kmlObject);
+                             if (kmlObject.getAbstractView())
+                             earth.getView().setAbstractView(kmlObject.getAbstractView());*/
+
+                            //map.setView([track.posLat,track.posLon],9);
+                            var newLatLng = new L.LatLng(track.posLat, track.posLon);
+                            if (selfMarker && selfMarker !== "null" && selfMarker !== "undefined") {
+                                selfMarker.setLatLng(newLatLng);
+                            } else {
+                                selfMarker = L.marker(newLatLng, {icon: blueIcon}).addTo(map);
+                                map.setView([track.posLat, track.posLon], 9);
+                            }
+
+                        }
+
+
+                        setTimeout(getOwnPosition, 2000, null);
+                    } else if (obj.msg_name == 'response own position') {
+                        setTimeout(getOwnPosition, 2000, null);
+                    }
+
+                    if (obj.msg_name == 'response members' && (obj.msg_err == "" || obj.msg_err == null)) {
+                        //console.log(obj);
+                        members = obj.members;
+
+                        refreshMemberList();
+
+                        for (var i = 0; i < members.length; i++) {
+                            var member = members[i];
+                            var track = member.currPos;
+                            var ll = new L.LatLng(track.posLat, track.posLon);
+                            var markerExist = false;
+                            for (var j = 0; j < markers.length; j++) {
+                                var marker = markers[j];
+                                if (marker.getId() == track.posId) {
+                                    markerExist = true;
+                                    marker.getMarker().setLatLng(ll);
+                                    if (member.status) {
+                                        marker.getMarker().setIcon(greenIcon);
+                                    } else {
+                                        marker.getMarker().setIcon(darkIcon);
+                                    }
+                                }
+                            }
+                            if (!markerExist) {
+                                if (member.status) {
+                                    var marker = new MarkerObj(track.posId, L.marker([track.posLat, track.posLon], {icon: greenIcon}).bindPopup(track.posName + ' on ' + track.posId));
+                                } else {
+                                    var marker = new MarkerObj(track.posId, L.marker([track.posLat, track.posLon], {icon: darkIcon}).bindPopup(track.posName + ' on ' + track.posId));
+                                }
+
+                                markers.push(marker);
+                                memberMarkers.push(marker.getMarker());
+                            }
+                            //var memberMarker = L.marker([track.posLat, track.posLon]).bindPopup(track.posName+' on '+track.posId);
+                            //markers.push(L.marker([track.posLat, track.posLon],{icon:greenIcon}).bindPopup(track.posName+' on '+track.posId));
+                        }
+                        //console.log(markers);
+                        //console.log(memberMarkers);
+                        //if( membersLayer && membersLayer !== "null" && membersLayer !== "undefined" ){
+                        //    map.removeLayer(membersLayer);
+                        //}
+
+                        membersLayer = L.layerGroup(memberMarkers);
+                        membersLayer.addTo(map);
+                        setTimeout(getMembers, 3000, null);
+                    } else if (obj.msg_name == 'response members') {
+                        setTimeout(getMembers, 3000, null);
+                    }
+
+                    if (obj.msg_name == 'response tac-messages' && (obj.msg_err == "" || obj.msg_err == null)) {
+                        //console.log(obj);
+                        tacMessages = obj.messages;
+
+                        refreshTacMessageList();
+
+
+
+                        setTimeout(getMembers, 3000, null);
+                    } else if (obj.msg_name == 'response members') {
+                        setTimeout(getMembers, 3000, null);
+                    }
+
+                });
+
+                // Add a 'close' event handler for the client socket
+                client.on('close', function () {
+                    isCmdServerBusy = false;
+                    console.log('Connection closed');
+                });
+
+                client.on('error', function (err) {
+                    //console.log(err);
+                    //console.log(reconnectAttempts);
+                    if (reconnectAttempts <= maxReconnectAttempts) {
+                        reconnectAttempts++;
+                        //isCmdServerBusy = false;
+                        setTimeout(requestMsg, 200, msg);
+                    } else if (err.code == 'ECONNREFUSED') {
+                        //isCmdServerBusy = false;
+                        reconnectAttempts = 0;
+                        $('#server-error').text('Server error : ' + err.code);
+                        $('#modalview-server-error').kendoMobileModalView('open');
+                    } else {
+                        $('#server-error').text('Server error : ' + err.code);
+                        $('#modalview-server-error').kendoMobileModalView('open');
+                    }
+
+                });
+                if (msg.reqMsg && msg.reqMsg !== "null" && msg.reqMsg !== "undefined") {
+
+                    //if(!isCmdServerBusy) {
+                    //console.log('Send request when server free');
+                    client.write(msg.reqMsg, 'UTF-8');
+                    client.end();
+                    isCmdServerBusy = true;
+                    //} else {
+
+                    //    setTimeout(requestMsg,200,msg);
+                    //}
+                }
+
+
+
+            }
+
+            function initApp() {
+                //getProfile(1);
+                //$('#comm_profile').change(changeProfile());
+
+
+                $('#connectBtn').click(function () {
+                    $('#modalview-input-mission-key').kendoMobileModalView('open');
+                });
+
+            }
+
+            function initMainSettingForm() {
+
+                var body = $("#main_setting_form");
+                if (kendo.ui.DropDownList) {
+                    $("#comm_profile").kendoDropDownList({
+                        // The options are needed only for the desktop demo, remove them for mobile.
+                        popup: {appendTo: body},
+                        animation: {open: {effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down"}}
+                    });
+                }
+
+
+
+                $('#main-setting-delete-button').click(function () {
+
+                    if ($('#comm_profile').val() == 1) {
+                        $('#form-error').text("Cannot delete default profile");
+                        $('#modalview-form-error').kendoMobileModalView('open');
+                    } else {
+                        $('#confirm-msg').text("Delete selected profile?");
+
+                        var params = '{"profileId":"' + $('#comm_profile option:selected').val() + '"'
+                                + '}';
+
+                        var reqMsg = new cmdMessage('delete profile', params);
+                        reqMsg.formatControlMessage();
+                        $('#confirm-req-data').data(reqMsg);
+                        $('#modalview-confirm').kendoMobileModalView('open');
+
+                    }
+
+
+                });
+
+
+
+            }
+
+            function initSerialSettingForm() {
+
+                var body = $("#serial-setting-view");
+                if (kendo.ui.DropDownList) {
+                    $("#comm_port").kendoDropDownList({
+                        // The options are needed only for the desktop demo, remove them for mobile.
+                        popup: {appendTo: body},
+                        animation: {open: {effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down"}}
+                    });
+                    $("#bit_rates").kendoDropDownList({
+                        // The options are needed only for the desktop demo, remove them for mobile.
+                        popup: {appendTo: body},
+                        animation: {open: {effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down"}}
+                    });
+                    $("#databits").kendoDropDownList({
+                        // The options are needed only for the desktop demo, remove them for mobile.
+                        popup: {appendTo: body},
+                        animation: {open: {effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down"}}
+                    });
+                    $("#stopbits").kendoDropDownList({
+                        // The options are needed only for the desktop demo, remove them for mobile.
+                        popup: {appendTo: body},
+                        animation: {open: {effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down"}}
+                    });
+                    $("#parity").kendoDropDownList({
+                        // The options are needed only for the desktop demo, remove them for mobile.
+                        popup: {appendTo: body},
+                        animation: {open: {effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down"}}
+                    });
+                    $("#flowcontrol").kendoDropDownList({
+                        // The options are needed only for the desktop demo, remove them for mobile.
+                        popup: {appendTo: body},
+                        animation: {open: {effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down"}}
+                    });
+                }
+
+
+
+                $('#serial-setting-save-button').click(function () {
+
+
+                    var params = '{"profileId":"' + $('#comm_profile option:selected').val() + '"'
+                            + ',"comm_port":"' + $('#comm_port option:selected').val() + '"'
+                            + ',"bit_rates":"' + $('#bit_rates option:selected').val() + '"'
+                            + ',"data_bits":"' + $('#databits option:selected').val() + '"'
+                            + ',"stop_bits":"' + $('#stopbits option:selected').val() + '"'
+                            + ',"parity":"' + $('#parity option:selected').val() + '"'
+                            + ',"flowcontrol":"' + $('#flowcontrol option:selected').val() + '"'
+                            + '}';
+
+                    var reqMsg = new cmdMessage('update serial profile', params);
+                    reqMsg.formatControlMessage();
+                    reqStack.push(reqMsg);
+                    //requestMsg(reqMsg);
+
+
+
+                });
+
+
+
+            }
+            var gps_params = kendo.observable({
+                gpsMode: 12,
+                gpsEnabled: true,
+                gpsUpdate: 2,
+                gpsReport: 5
+            });
+            function initGPSSettingForm() {
+
+                var body = $("#gps-setting-view");
+                if (kendo.ui.DropDownList) {
+                    $("#gps_mode").kendoDropDownList({
+                        // The options are needed only for the desktop demo, remove them for mobile.
+                        popup: {appendTo: body},
+                        animation: {open: {effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down"}}
+                    });
+
+                }
+
+
+
+                $('#gps-setting-save-button').click(function () {
+
+                    var params = '{"profileId":"' + $('#comm_profile option:selected').val() + '"'
+                            + ',"gpsmode":"' + gps_params.get('gpsMode') + '"'
+                            + ',"gpsupdate":' + gps_params.get('gpsUpdate') + ''
+                            + ',"gpsreport":' + gps_params.get('gpsReport') + ''
+                            + ',"gpsenabled":' + gps_params.get('gpsEnabled') + ''
+                            + '}';
+
+                    var reqMsg = new cmdMessage('update gps profile', params);
+                    reqMsg.formatControlMessage();
+                    reqStack.push(reqMsg);
+                    //requestMsg(reqMsg);
+
+
+
+                });
+
+
+
+            }
+
+            var radio_params = kendo.observable({
+                otaBaud: 5,
+                slotTime: 100,
+                frameTime: 1,
+                freq: 145.125,
+                pwr: 60
+            });
+            function initRadioSettingForm() {
+
+                var body = $("#radio-setting-view");
+                if (kendo.ui.DropDownList) {
+                    $("#ota_baud").kendoDropDownList({
+                        // The options are needed only for the desktop demo, remove them for mobile.
+                        popup: {appendTo: body},
+                        animation: {open: {effects: body.hasClass("km-android") ? "fadeIn" : body.hasClass("km-ios") || body.hasClass("km-wp") ? "slideIn:up" : "slideIn:down"}}
+                    });
+
+                }
+
+                if (kendo.ui.Slider) {
+                    $("#pwr_output").kendoSlider({tooltip: {enabled: true}});
+                }
+
+
+                $('#radio-setting-save-button').click(function () {
+
+                    var params = '{"profileId":"' + $('#comm_profile option:selected').val() + '"'
+                            + ',"otabaud":"' + radio_params.get('otaBaud') + '"'
+                            + ',"slottime":' + radio_params.get('slotTime') + ''
+                            + ',"frametime":' + radio_params.get('frameTime') + ''
+                            + ',"frequency":' + radio_params.get('freq') + ''
+                            + ',"power":' + radio_params.get('pwr') + ''
+                            + '}';
+
+                    var reqMsg = new cmdMessage('update radio profile', params);
+                    reqMsg.formatControlMessage();
+                    reqStack.push(reqMsg);
+                    //requestMsg(reqMsg);
+
+
+
+                });
+
+
+
+            }
+            function initAddProfileForm() {
+
+                $('#new_profile_name').val('');
+
+                $('#addprofile-save-button').click(function () {
+
+                    if ($('#new_profile_name').val() == "") {
+                        $('#form-error').text("Profile name cannot be blank");
+                        $('#modalview-form-error').kendoMobileModalView('open');
+                    } else {
+                        var params = '{"profileName":"' + $('#new_profile_name').val() + '"'
+                                + '}';
+
+                        var reqMsg = new cmdMessage('add new profile', params);
+                        reqMsg.formatControlMessage();
+                        reqStack.push(reqMsg);
+                        //requestMsg(reqMsg);
+                    }
+
+
+                });
+
+
+            }
+
+            function initEditProfileForm() {
+                if ($('#comm_profile option:selected').val() == 1) {
+                    app.navigate("#:back");
+                    $('#form-error').text("Cannot edit default profile name");
+                    $('#modalview-form-error').kendoMobileModalView('open');
+
+                }
+                $('#edit_profile_name').val($('#comm_profile option:selected').text());
+
+                $('#editprofile-save-button').click(function () {
+
+                    if ($('#edit_profile_name').val() == "") {
+                        $('#form-error').text("Profile name cannot be blank");
+                        $('#modalview-form-error').kendoMobileModalView('open');
+                    } else {
+                        var params = '{"profileName":"' + $('#edit_profile_name').val() + '"'
+                                + '}';
+
+                        var reqMsg = new cmdMessage('update profile', params);
+                        reqMsg.formatControlMessage();
+                        reqStack.push(reqMsg);
+                        //requestMsg(reqMsg);
+                    }
+
+
+                });
+
+
+            }
+
+            function changeProfile() {
+
+                //console.log($('#comm_profile option:selected').val());
+                if ($('#comm_profile option:selected').val() != 0) {
+                    getProfile($('#comm_profile option:selected').val());
+                } else {
+                    $('#comm_profile').replaceWith('<input type="text" name="new_comm_profile" id="new_comm_profile">');
+                    $('#setting-back-button').replaceWith('<a id="setting-cancel-button" class="nav-button" data-align="left" data-role="button">Cancel</a>');
+                    $('#setting-cancel-button').kendoMobileButton();
+                    $('#setting-cancel-button').click(function () {
+                        $('#setting-cancel-button').replaceWith('<a id="setting-back-button" class="nav-button" data-align="left" href="#welcomeView" data-role="button">Back</a>');
+                        $('#setting-back-button').kendoMobileButton();
+                        $('#new_comm_profile').replaceWith('<select id="comm_profile" onChange="changeProfile()"></select>');
+
+                        getProfiles();
+
+                    });
+                }
+
+            }
+            function getProfile(id) {
+
+                var reqMsg = new cmdMessage('get profile', '{"profileId":' + id + '}');
+                reqMsg.formatControlMessage();
+                reqStack.push(reqMsg);
+                //requestMsg(reqMsg);
+            }
+            function getProfiles() {
+                var reqMsg = new cmdMessage('get profiles', null);
+                reqMsg.formatControlMessage();
+                reqStack.push(reqMsg);
+                //requestMsg(reqMsg);
+            }
+            function bin2String(array) {
+
+                var result = "";
+                var foundJSONstr = false;
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i] == 123 && !foundJSONstr) {
+                        foundJSONstr = true;
+                    }
+                    if (foundJSONstr) {
+                        result += String.fromCharCode(array[i]);
+                    }
+
+                }
+                //console.log(result);
+                return result;
+            }
+            //function formatControlMessage(cmsg,params) {
+            //
+            //
+            //    return JSON.stringify({
+            //        msg_name: cmsg,
+            //        msg_params: params
+            //    });
+            //
+            //
+            //}
+
+
+            function revealApp() {
+                $('div.k-loading-mask').hide();
+            }
+            function hideApp() {
+                $('div.k-loading-mask').show();
+            }
+
+            function closeModalViewServerErrAndRetry() {
+                $('#modalview-server-error').kendoMobileModalView('close');
+                //    var reqStatus =formatControlMessage('request server status', null);
+                //    setTimeout(requestMsg,500,reqStatus);
+                reconnectAttempts = 0;
+                var reqMsg = new cmdMessage('request server status', null);
+                reqMsg.formatControlMessage();
+                reqStack.push(reqMsg);
+                //requestMsg(reqMsg);
+            }
+
+            function closeModalViewServerErrAndExit() {
+                $('#modalview-server-error').kendoMobileModalView('close');
+                gui.App.quit();
+            }
+
+            function closeModalViewDBErrAndRetry() {
+                $('#modalview-db-error').kendoMobileModalView('close');
+                var msg = $('#req-data').data();
+                setTimeout(requestMsg, 200, msg);
+            }
+
+            function closeModalViewDBErrAndExit() {
+                $('#modalview-db-error').kendoMobileModalView('close');
+                //gui.App.quit();
+            }
+
+            function closeModalViewConnErrAndRetry() {
+                $('#modalview-conn-error').kendoMobileModalView('close');
+                var msg = $('#conn-req-data').data();
+                setTimeout(requestMsg, 200, msg);
+            }
+
+            function closeModalViewConnErrAndExit() {
+                $('#modalview-conn-error').kendoMobileModalView('close');
+                //gui.App.quit();
+            }
+
+            function closeModalViewFormErr() {
+                $('#modalview-form-error').kendoMobileModalView('close');
+                //gui.App.quit();
+            }
+
+            function modalViewConfirm() {
+                $('#modalview-confirm').kendoMobileModalView('close');
+                var msg = $('#confirm-req-data').data();
+                setTimeout(requestMsg, 200, msg);
+            }
+
+            function modalViewCancel() {
+                $('#modalview-confirm').kendoMobileModalView('close');
+                //gui.App.quit();
+            }
+
+            function modalViewConfirmConnect() {
+                $('#modalview-input-mission-key').kendoMobileModalView('close');
+                mission_key = $('#mission_key').val();
+                $('#mission_key').val('');
+                connectSerial();
+            }
+
+            function modalViewCancelConnect() {
+                $('#modalview-input-mission-key').kendoMobileModalView('close');
+                mission_key = $('#mission_key').val();
+                $('#mission_key').val('');
+                //gui.App.quit();
+            }
+
+            function connectSerial() {
+                var params = '{"profileId":' + $('#comm_profile option:selected').val() + ''
+                        + ',"comm_port":"' + $('#comm_port').val()
+                        + '","bit_rates":' + $('#bit_rates').val()
+                        + ',"data_bits":' + $('#databits').val()
+                        + ',"stop_bits":"' + $('#stopbits').val()
+                        + '","parity":"' + $('#parity').val()
+                        + '","flowcontrol":"' + $('#flowcontrol').val()
+                        + '"}';
+                hideApp();
+                var reqMsg = new cmdMessage('connect', params);
+                reqMsg.formatControlMessage();
+                reqStack.push(reqMsg);
+                //requestMsg(reqMsg);
+            }
+
+            function getOwnPosition() {
+                var reqMsg = new cmdMessage('request own position', null);
+                reqMsg.formatControlMessage();
+                reqStack.push(reqMsg);
+                //requestMsg(reqMsg);
+            }
+
+            function getMembers() {
+                var reqMsg = new cmdMessage('request members', null);
+                reqMsg.formatControlMessage();
+                reqStack.push(reqMsg);
+                //requestMsg(reqMsg);
+            }
+
+            function getTacMessages() {
+                var reqMsg = new cmdMessage('request tac-messages', null);
+                reqMsg.formatControlMessage();
+                reqStack.push(reqMsg);
+                //requestMsg(reqMsg);
+            }
+
+            function initMemberList() {
+                var membersDataSource = new kendo.data.DataSource({data: members});
+                $("#members-listview").kendoMobileListView({
+                    dataSource: membersDataSource,
+                    pullToRefresh: true,
+                    template: $("#memberlist-template").text(),
+                    pullParameters: function (item) {
+
+                    }
+                });
+            }
+
+            function initTacMessageList() {
+                var messageDataSource = new kendo.data.DataSource({data: tacMessages});
+                $("#message-listview").kendoMobileListView({
+                    dataSource: messageDataSource,
+                    pullToRefresh: true,
+                    template: $("#messagelist-template").text(),
+                    pullParameters: function (item) {
+
+                    }
+                });
+                $("#message_toolbar").kendoToolBar({
+                    resizable: false,
+                    items: [
+                        {template: "<label>Message:</label><input id='msg_to_send' style='width: 600px;' type='text' />"},
+                        {type: "separator"},
+                        {type: "button",
+                            text: "Send",
+                            id: 'send_msg_btn',
+                            click: function (e) {
+                                console.log($("#msg_to_send").val());
+
+                                var params = '{"tac_message_type":1,"tac_message":"' + $('#msg_to_send').val() + '"'
+                                        + '}';
+
+                                var reqMsg = new cmdMessage('send broadcast tac-messages', params);
+                                reqMsg.formatControlMessage();
+                                reqStack.push(reqMsg);
+
+                            }
+                        }
+                    ]
+                });
+            }
+
+            function refreshMemberList() {
+                if ($("#members-listview").data("kendoMobileListView") && $("#members-listview").data("kendoMobileListView") != "null" && $("#members-listview").data("kendoMobileListView") != "undefined") {
+
+                    $("#members-listview").data("kendoMobileListView").dataSource.data(members);
+                }
+            }
+
+            function refreshTacMessageList() {
+                if ($("#message-listview").data("kendoMobileListView") && $("#message-listview").data("kendoMobileListView") != "null" && $("#message-listview").data("kendoMobileListView") != "undefined") {
+
+                    $("#message-listview").data("kendoMobileListView").dataSource.data();
+                }
+            }
+            //////////////////////////////////////////////////
+            // Google Earth setup
+            ////////////////////////////////////////////////
+
+            // Called when the plugin loads sucessfully.
+            function drawEarth(earth_api) {
+                earth = earth_api;
+                earth.getWindow().setVisibility(true);
+                getOwnPosition();
+            }
+
+            // Called when the plugin cannot load.
+            // Usually this means the plugin is not installed.
+            function earthError() {
+                alert('Earth plugin not available.');
+            }
+
+            // Called when the JavaScript API loads.
+            // This doesn't necessarily mean the plugin will load, but
+            // you can call google.earth.createInstance now.
+            function loadSuccessful() {
+                if ($('#map3d').length) {
+                    $('#map3d').remove();
+                }
+                $('#map_holder').css('width', win.width - 10);
+                $('#map_holder').css('height', win.height - 174);
+                $('#map_holder').css('background-color', '#000000');
+                $('#map_holder').append('<div id="map3d"></div>');
+                $('#map3d').css('width', win.width - 10);
+                $('#map3d').css('height', win.height - 174);
+                google.earth.createInstance('map3d', drawEarth, earthError);
+
+            }
+
+            // Called when the JavaScript API doesn't load.
+            function loadError() {
+                alert('Unable to load Google Earth JavaScript API.');
+            }
+
+            // Trigger the loading of the Earth API.
+            // When the API loads we call the success function which
+            // should have access to the full Earth JS API.  The error
+            // callback here is called when the JS Earth API never loads.
+            function initializeMap() {
+                var loaderOptions = {
+                    'other_params': 'sensor=false',
+                    'success': loadSuccessful,
+                    'error': loadError
+                };
+                loadEarthApi(loaderOptions);
+            }
+            ;
+
+            var blueIcon = L.icon({
+                iconUrl: '../resources/images/free-map-marker-icon-blue.png',
+                iconSize: [48, 48],
+                iconAnchor: [24, 48],
+                popupAnchor: [0, -76],
+                shadowUrl: '../resources/images/marker-shadow.png',
+                shadowSize: [48, 48],
+                shadowAnchor: [22, 94],
+                shadowSize: [68, 95]
+            });
+            var greenIcon = L.icon({
+                iconUrl: '../resources/images/free-map-marker-icon-green.png',
+                iconSize: [48, 48],
+                iconAnchor: [24, 48],
+                popupAnchor: [0, -48],
+                shadowUrl: '../resources/images/marker-shadow.png',
+                shadowSize: [48, 48],
+                shadowAnchor: [22, 94],
+                shadowSize: [68, 95]
+            });
+            var redIcon = L.icon({
+                iconUrl: '../resources/images/free-map-marker-icon-red.png',
+                iconSize: [48, 48],
+                iconAnchor: [24, 48],
+                popupAnchor: [-3, -48],
+                shadowUrl: '../resources/images/marker-shadow.png',
+                shadowSize: [48, 48],
+                shadowAnchor: [22, 94],
+                shadowSize: [68, 95]
+            });
+            var darkIcon = L.icon({
+                iconUrl: '../resources/images/free-map-marker-icon-dark.png',
+                iconSize: [48, 48],
+                iconAnchor: [24, 48],
+                popupAnchor: [-3, -48],
+                shadowUrl: '../resources/images/marker-shadow.png',
+                shadowSize: [48, 48],
+                shadowAnchor: [22, 94],
+                shadowSize: [68, 95]
+            });
+
+            function initializeMapv2() {
+                $('#map_holder').css('width', win.width - 10);
+                $('#map_holder').css('height', win.height - 154);
+                $('#map_holder').css('background-color', '#FFFFFF');
+                //$('#map_holder').append('<div id="map3d"></div>');
+                //$('#map3d').css('width',win.width-10);
+                //$('#map3d').css('height',win.height-174);
+                map = L.map('map_holder').setView([13.75, 100.466667], 9);
+                L.tileLayer('https://{s}.tiles.mapbox.com/v4/dtitdl.j679bl09/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZHRpdGRsIiwiYSI6ImZTajJSdHcifQ.Z3yru99Z5_j1QhsQz4s4Tw', {
+                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                    maxZoom: 18
+                }).addTo(map);
+                //selfMarker = L.marker(map.getCenter()).addTo(map);
+                membersLayer = L.layerGroup(memberMarkers);
+                membersLayer.addTo(map);
+                setTimeout(getOwnPosition, 2000, null);
+                setTimeout(getMembers, 2500, null);
+                setTimeout(getTacMessages, 3000, null);
+
+            }
+            ;
+            $(document).ready(function () {
+                var reqMsg = new cmdMessage('request server status', null);
+                reqMsg.formatControlMessage();
+                reqStack.push(reqMsg);
+                //requestMsg(reqMsg);
+                setTimeout(getReqMsg, 1000, null);
+                //console.log(process.mainModule.exports.dirname);
+                app = new kendo.mobile.Application(document.body);
+
+                $('#connected_time').runner();
+            });
+
+        </script>
+    </body>
+</html>

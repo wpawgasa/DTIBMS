@@ -9,8 +9,11 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import tdl.messaging.PPLI;
+import tdl.messaging.TDLMessageHandler;
 
 /**
  *
@@ -18,6 +21,9 @@ import java.util.List;
  */
 public class TDLBMSInterface {
     private InputStream serialInputStream;
+    private OutputStream serialOutputStream;
+    private String timestamp;
+    
     public class ReceiveSerialThread extends Thread {
         private volatile boolean isThreadAlive = true;
 
@@ -119,10 +125,10 @@ public class TDLBMSInterface {
                                 if (rxMsg.substring(0, 6).equalsIgnoreCase("$GPRMC")) {
                                     PPLI ppli = TDLMessageHandler.decodeOwnPosition(rxMsg);
                                     System.out.println("own position: " + ppli.getPosLat() + ", " + ppli.getPosLon());
-                                    ppli.setPosId(ownRadioId);
-                                    ppli.setPosName(ownprofileId);
+                                    //ppli.setPosId(ownRadioId);
+                                    //ppli.setPosName(ownprofileId);
 
-                                    ownTrack.add(ppli);
+                                    //ownTrack.add(ppli);
                                     //currentPosition.setText(ppli.getPosLat()+", "+ppli.getPosLon());
                                 }
                                 tmpStr = "";
